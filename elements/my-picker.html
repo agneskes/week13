@@ -1,0 +1,44 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="my-picker" noscript>
+  <template>
+    <form>
+      <select id="colourFace" on-change="{{onChangeColourFace}}">
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="purple">Purple</option>
+        <option value="orange">Orange</option>
+      </select>
+      <select id="colourLine" on-change="{{onChangeColourLine}}">
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="purple">Purple</option>
+        <option value="orange">Orange</option>
+      </select>
+      <input type="range" id="lineWidth" min="1" max="10" on-change="{{onChangeLineWidth}}">
+   </form>
+  </template>
+  <script>
+    Polymer('my-picker', { 
+      ready : function () {
+
+      },
+      onChangeColourFace : function () {
+        var faceSelect = this.$.colourFace;
+        this.fire('colourFace', faceSelect.options[faceSelect.selectedIndex].value);
+      },
+      onChangeColourLine : function () {
+        var lineSelect = this.$.colourLine;
+        this.fire('colourLine', lineSelect.options[lineSelect.selectedIndex].value);
+      },
+      onChangeLineWidth : function () {
+        var lineWidth = this.$.lineWidth;
+        this.fire('lineWidth', lineWidth.value);
+      }
+    });
+  </script>
+</polymer-element>
